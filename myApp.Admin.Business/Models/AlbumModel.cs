@@ -18,4 +18,13 @@ namespace myApp.Admin.Business.Models
         public decimal Price { get; set; }
         public string AlbumArtUrl { get; set; }
     }
+
+    public partial class mySelectListItem
+    {
+        public int id { get; set; }
+
+        public string name { get; set; }
+
+        public string text { get; set; }
+    }
 }

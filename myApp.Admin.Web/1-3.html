@@ -15,20 +15,45 @@
     <!--<script src="resource/js/filter.js"></script>-->
     <script src="Module/public/filters.js"></script>
     <script src="directives/directive.js?v=125"></script>
+    <script type="text/javascript">
+        function SaveTest() {
+            var jsonObj = [];
+            jsonObj.push({ "id": 1, "name": "123" });
+            jsonObj.push({ "id": 2, "name": "234" });
+            jsonObj.push({ "id": 3, "name": "345" });
+            $.ajax({
+                url: "/Home/Save",
+                type: "post",
+                dataType: "json",
+                async: false,
+                data: JSON.stringify(jsonObj),
+                success: function (data) {
+                    alert(data);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.status);
+                    alert(XMLHttpRequest.readyState);
+                    alert(textStatus);
+                }
+            });
+        }
+    </script>
 
 </head>
 <body>
     <header>
-        <div slid-box title="Links">
-            <ul>
-                <li>First link</li>
-                <li>Second link</li>
-            </ul>
-        </div>
+        <h4>XXX system</h4></h1>
 
     </header>
     <div class="content">
-        <div ng-view>
+        <div slid-box title="Links" class="leftMenu">
+            <ul>
+                <li><a href="/1-3.html#/">First link</a></li>
+                <li><a href="/1-3.html#/login">Second link</a></li>
+            </ul>
+        </div>
+        <div class="rightContent" ng-view>
            
        </div>
     </div>
@@ -36,7 +61,9 @@
         <h5>Footer</h5>
     </footer>
     
-
+    <div>
+        <input id="btn" type="button" value="提交" onclick="SaveTest()" />
+    </div>
 </body>
 
 

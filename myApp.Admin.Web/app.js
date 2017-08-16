@@ -27,6 +27,12 @@ app.run(['$rootScope', function ($rootScope) {
        $rootScope.rootShow = true;
        
     });
+
+    $rootScope.$on('$routeChangeStart', function (event, current, previous) {
+
+        $rootScope.rootShow = true;
+
+    });
 }]);
 
 
