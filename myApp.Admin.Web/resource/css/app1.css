@@ -1,0 +1,72 @@
+﻿
+.content{
+    margin: 20px 40px;
+}
+
+.leftMenu{
+    float: left;
+    width: 198px;
+    border:1px solid #E0E0E0;
+    min-height: 100px;
+}
+
+.menuTop{
+    height: 40px;
+    color: #4c4c4c;
+    background-color: #FAFAFA;
+    line-height: 40px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-left: 15px;
+}
+
+.menuItem{
+    margin: 10px 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.menuItem .title{
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+.menuIcon{
+    height: 18px;
+    width: 18px;
+    vertical-align:middle;
+}
+
+.menuItem ol{
+    margin-bottom: 5px;
+}
+
+.menuItem ol li{
+    float: left;
+    width: 83px;
+    padding-bottom: 10px;
+    font-size: 12px;
+    color: #4c4c4c;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.menuItem ol li:hover{
+    text-decoration: underline;
+}
+
+.lastItem{
+    border-bottom: none;
+}
+
+.rightContent{
+    margin-left: 250px;
+    min-height: 300px;
+    color: #4c4c4c;
+    font-size: 14px;
+}
+
+.odd {
+background-color: blue;
+}
+.even {
+background-color: red;
+}

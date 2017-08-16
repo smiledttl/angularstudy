@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="myAppModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="myAppModelContainer" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+    <EntitySet Name="albums" EntityType="myAppModel.albums" />
+    <EntitySet Name="artists" EntityType="myAppModel.artists" />
+    <EntitySet Name="genres" EntityType="myAppModel.genres" />
+    <AssociationSet Name="Genre_Albums" Association="myAppModel.Genre_Albums">
+      <End Role="genres" EntitySet="genres" />
+      <End Role="albums" EntitySet="albums" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="albums">
+    <Key>
+      <PropertyRef Name="AlbumId" />
+    </Key>
+    <Property Name="AlbumId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GenreId" Type="Int32" Nullable="false" />
+    <Property Name="ArtistId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" />
+    <Property Name="AlbumArtUrl" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="genres" Relationship="myAppModel.Genre_Albums" FromRole="albums" ToRole="genres" />
+  </EntityType>
+  <EntityType Name="artists">
+    <Key>
+      <PropertyRef Name="ArtistId" />
+    </Key>
+    <Property Name="ArtistId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="genres">
+    <Key>
+      <PropertyRef Name="GenreId" />
+    </Key>
+    <Property Name="GenreId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="albums" Relationship="myAppModel.Genre_Albums" FromRole="genres" ToRole="albums" />
+  </EntityType>
+  <Association Name="Genre_Albums">
+    <End Type="myAppModel.genres" Role="genres" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="myAppModel.albums" Role="albums" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="genres">
+        <PropertyRef Name="GenreId" />
+      </Principal>
+      <Dependent Role="albums">
+        <PropertyRef Name="GenreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

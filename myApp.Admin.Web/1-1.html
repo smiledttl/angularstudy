@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <title>AngularJS - 指令系统</title>
+    <link href="resource/css/app1.css" type="text/css" rel="stylesheet" />
+    <link href="resource/css/bootstrap.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/foundation/4.3.2/css/foundation.min.css">
+    <script src="resource/js/angular.js"></script>
+    <script src="app.js?v=1334"></script>
+    <script src="resource/js/angular-ui-router.js"></script>
+    <script src="directives/Publicc/tableList/tableKiller.directive.js"></script>
+    <script src="resource/js/jquery-2.1.0.js"></script>
+    <script src="resource/js/ngDialog.js"></script>
+    <!--<script src="resource/js/filter.js"></script>-->
+    <script src="Module/public/filters.js"></script>
+    <script src="directives/directive.js?v=125"></script>
+
+    <script type="text/javascript">
+        var json1 = {"123-4":"values123434","123-5":"values123435","123-6":"values123436"};
+        //for ( var i in json1) {
+        //    console.log("i:"+i);
+        //    console.log("json1[i]:"+json1[i]);
+        //}
+
+        var json = { "options": "[{\"text\":\"王家湾\",\"value\":\"9\"},{\"text\":\"李家湾\",\"value\":\"10\"},{\"text\":\"邵家湾\",\"value\":\"13\"}]" };
+        var op = eval(json.options);
+        for (var t in op) {
+            console.log("text:" + op[t].text + ",value:" + op[t].value);
+        }
+       
+    </script>
+</head>
+<body>
+
+    <div         ng-init="someProperty = 'some data'">
+        someProperty:{{someProperty}}
+        <div ng-init="siblingProperty='moredata'">
+            Inside Div Two: {{ aThirdProperty }}
+            <div ng-init="aThirdProperty = 'data for 3rd property'"
+                 ng-controller="SomeController">
+                Inside Div Three: {{ aThirdProperty }}
+                <div ng-init="aFourthProperty" ng-controller="SecondController">
+                    Inside Div Four: {{ aThirdProperty }}
+                    <br>
+                    Outside myDirective: {{ myProperty }}
+                    <div my-directive ng-init="myProperty = 'wow, this is cool'">
+                        Inside myDirective: {{ myProperty }} <br/>
+                        parent Three: {{ aThirdProperty }}                       
+                     <div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div ng-init="myProperty='wow,thisiscool'">
+        Surrounding scope: {{ myProperty }} <br />
+        <div my-inherit-scope-directive ></div>
+        <br />
+        <div my-directive my-pro="myProperty"></div>
+    </div>
+    <div ng-controller="ParentController" ng-if="false">
+
+        <!--{{"what's your Name?" | lowercase | capitalize }}
+
+        <form name="signup_form" novalidate ng-submit="signupForm();">
+            <fieldset>
+                <legend>Signup</legend>
+
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>Your name</label>
+                        <input type="text"
+                               placeholder="Name"
+                               name="name"
+                               ng-model="signup.name"
+                               ng-minlength=3
+                               ng-maxlength=20 required />
+                        <div class="error"
+                             ng-show="signup_form.name.$dirty && signup_form.name.$invalid">
+                            <small class="error"
+                                   ng-show="signup_form.name.$error.required">
+                                Your name is required.
+                            </small>
+                            <small class="error"
+                                   ng-show="signup_form.name.$error.minlength">
+                                Your name is required to be at least 3 characters
+                            </small>
+                            <small class="error"
+                                   ng-show="signup_form.name.$error.maxlength">
+                                Your name cannot be longer than 20 characters
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>Email address</label>
+                        <input type="email"
+                               placeholder="Email address"
+                               name="email"
+                               ng-model="signup.email"
+                               ng-minlength=3
+                               ng-maxlength=20 required />
+                        <div class="error"
+                             ng-show="signup_form.email.$dirty && signup_form.email.$invalid">
+                            <small class="error"
+                                   ng-show="signup_form.email.$error.required">
+                                Your name is required.
+                            </small>
+                            <small class="error"
+                                   ng-show="signup_form.email.$error.minlength">
+                                Your name is required to be at least 3 characters
+                            </small>
+                            <small class="error"
+                                   ng-show="signup_form.email.$error.email">
+                                That is not a valid email. Please input a valid email.
+                            </small>
+                            <small class="error"
+                                   ng-show="signup_form.email.$error.maxlength">
+                                Your name cannot be longer than 20 characters
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+
+                <button type="submit"  class="button radius">Submit</button>
+            </fieldset>
+        </form>
+            -->
+        <hr />
+        <textarea ng-disabled="isDisabled">dsadfasfd</textarea>
+        {{someModel.someProperty}}<button id="do1" ng-click="someAction();">commpute to child</button>
+        <hr />
+        <div ng-controller="ChildController">
+            {{someModel.someProperty}}<button id="do2" ng-click="childAction()">commpute to Parent</button>
+
+        </div>
+    </div>
+
+        <input type="text" ng-model="pageUrl" />
+    <div my-hello
+         some-attr="pageUrl"
+         my-link-text="lintext {{pageUrl}}"></div>
+
+    <hr />
+    <div ng-controller="PeopleController">
+        <ul>
+            <li ng-repeat="p in people" ng-class="{even:!$even,odd:!$odd}">
+                {{p.name}} lives in {{p.city}}
+            </li>
+        </ul>
+
+
+    </div>
+
+    <hr />
+    <form name="signup_form" novalidate ng-submit="signupForm();" ng-controller="FormController">
+        <fieldset>
+            <legend>Signup</legend>
+
+            <div class="row" ng-form="signup_form_input" ng-repeat="f in fields">
+                <div class="large-12 columns">
+                    <label>{{f.placeholder}}</label>
+                    <input type="text"
+                           name="dynamic_input"
+                           placeholder="{{f.placeholder}}"
+                           ng-model="f.name"
+                           ng-required="f.isRequired" />
+                    <div class="error"
+                         ng-show="signup_form_input.dynamic_input.$dirty && signup_form_input.dynamic_input.$invalid">
+                        <small class="error"
+                               ng-show="signup_form_input.dynamic_input.$error.required">
+                            {{f.placeholder}} is required.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <select ng-model="selectedOption" ng-options="p.id  as (p.ProductName+'--'+p.id)  group by p.MainCategory for p  in optData">
+                    <option value="">please select option</option>
+                </select>
+                selected: {{selectedOption}}
+            </div>
+            <div>
+                <select ng-model="selectedPerson" ng-options="obj.name for obj in people"></select>
+                <select ng-model="selectedGenre">
+                    <option ng-repeat="label in people[selectedPerson.id].interest">{{label}}</option>
+                </select>
+                selectedPerson: {{selectedPerson}}   selectedGenre: {{selectedGenre}}
+            </div>
+
+            <button type="submit" class="button radius" ng-disabled="signup_form.$invalid">Submit</button>
+        </fieldset>
+    </form>
+
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title>todoList</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+<body style="padding: 10px;" ng-controller="TaskCtrl">
+    <div class="input-group">
+        <input type="text" class="form-control" ng-model="task">
+        <span class="input-group-btn">
+            <button class="btn btn-default" ng-click="addItem();">提交</button>
+            <button class="btn btn-default" ng-click="getlist();">获取列表数据</button>
+        </span>
+    </div>
+    <h4 ng-if="task.length>0">任务列表</h4>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="item in tasks track by $index">{{item}}<a ng-click="tasks.splice($index,1)">删除</a></li>
+    </ul>
+    <table class="tableBox" border="1">
+        <thead>
+            <tr>
+                <th>专辑编号</th>
+                <th>专辑名称</th>
+                <th>流派</th>
+                <th>歌手</th>
+                <th>价格</th>
+                <th>URL</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in tasks">
+                <td style="word-wrap:break-word;" width="5%">{{item.AlbumId}}</td>
+                <td style="word-wrap:break-word;" width="20%">{{item.Title}}</td>
+                <td style="word-wrap:break-word;" width="10%">{{item.Genre}}</td>
+                <td style="word-wrap:break-word;" width="10%">{{item.Artist}}</td>
+                <td style="word-wrap:break-word;" width="5%">{{item.Price}}</td>
+                <td style="word-wrap:break-word;" width="20%">{{item.AlbumArtUrl}}</td>
+                <td width="10%">
+                    <button ng-click="tasks.splice($index,1)" style="width:30px;">删除</button>
+ 
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div ng-controller="ParentController">
+        <div ng-controller="ChildController">
+            <a ng-click="sayHello();">SayHello</a>
+            <br />
+            <h4>{{user}}</h4>
+        </div>
+        {{person}}
+        
+    </div>
+  
+</body>
+<script src="resource/js/angular.js"></script>
+<script src="app.js"></script>
+<script src="resource/js/service.js"></script>
+</html>

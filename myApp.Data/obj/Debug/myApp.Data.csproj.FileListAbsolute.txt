@@ -1,0 +1,12 @@
+D:\study\angular\51cto\myApp.Data\bin\Debug\myApp.Data.dll.config
+D:\study\angular\51cto\myApp.Data\bin\Debug\myApp.Data.dll
+D:\study\angular\51cto\myApp.Data\bin\Debug\myApp.Data.pdb
+D:\study\angular\51cto\myApp.Data\bin\Debug\EntityFramework.dll
+D:\study\angular\51cto\myApp.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\study\angular\51cto\myApp.Data\bin\Debug\MySql.Data.dll
+D:\study\angular\51cto\myApp.Data\bin\Debug\MySql.Data.Entity.EF6.dll
+D:\study\angular\51cto\myApp.Data\bin\Debug\EntityFramework.xml
+D:\study\angular\51cto\myApp.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\study\angular\51cto\myApp.Data\obj\Debug\myApp.Data.dll
+D:\study\angular\51cto\myApp.Data\obj\Debug\myApp.Data.pdb
+D:\study\angular\51cto\myApp.Data\obj\Debug\myApp.Data.csprojResolveAssemblyReference.cache

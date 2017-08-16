@@ -1,0 +1,120 @@
+'use strict';
+var app = angular.module('myApp', ['ui.router', 'ngDialog', 'tableKillModule','myApp.filters']).config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+    $urlRouterProvider.otherwise('/roomManage');
+});
+
+app.run(['$rootScope', function ($rootScope) {
+   
+
+
+    $rootScope.$on('$stateChangeStart', function (event, current, previous) {
+
+       $rootScope.rootShow = true;
+       
+    });
+}]);
+
+
+
+app.controller('MainCtrl', function ($scope, UserInformation) {
+    $scope.message = "world";
+    $scope.show = false;
+    $scope.user = UserInformation;
+    $scope.person = {name:"", greeted: false };
+    $scope.developers = [{ "name": "mike", "age": 26, "salary": 2000 }, { "name": "bill", "age": 32, "salary": 5000 }, { "name": "sami", "age": 29, "salary": 4000 }];
+    $scope.greet=function()
+    {
+        $scope.message = "hello ," + $scope.user.name;
+    }
+});
+
+app.controller('SecondCtrl', function ($scope, UserInformation) {
+    $scope.user = UserInformation;
+    
+ 
+});
+
+app.controller('ParentController', function ($scope,$timeout) {
+    $scope.pageUrl = "";
+    $scope.email1 = "";
+    $scope.signup = { name: '', username: '', email: '' };
+    $scope.isDisabled = true;
+    
+    $timeout(function () {
+        $scope.isDisabled = false;
+        $scope.myHref = "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1893699162,13335324&fm=173&s=9903F9175912EECC56F405E203009032&w=400&h=287&img.JPEG";
+    },5000)
+
+    $scope.signupForm = function () {
+        if ($scope.signup_form.$valid) {
+            alert("name:" + $scope.signup.name + ";email" + $scope.signup.email + ";")
+        } else {
+            //$scope.signup_form.submitted = true;
+        }
+    }
+
+    $scope.someModel={
+        someProperty: "hello computer"
+    };
+    $scope.someAction = function () {
+        $scope.someModel.someProperty = "hello human from Parent";
+    };
+
+});
+
+app.controller('ChildController', function ($scope/*, UserInformation*/) {
+    
+    //$scope.sayHello = function () {
+    //    $scope.person.name = "Ari lerner";
+    //    $scope.user = UserInformation;
+    //}
+
+    $scope.childAction = function () {
+        $scope.someModel.someProperty = "hello human from child";
+    };
+
+});
+
+app.controller('PeopleController', function ($scope) {
+    $scope.people = [
+    { name: "Ari", city: "San Francisco" },
+    { name: "Erik", city: "Seattle" },
+    { name: "Erik2", city: "Seattle2" },
+    { name: "Erik3", city: "Seattle3" },
+    { name: "Ari2", city: "San Francisco2" },
+    ];
+});
+
+app.controller('FormController', function ($scope) {
+    $scope.fields = [
+        { code: 'username',placeholder: 'Username', isRequired: true },
+        { code: 'password', placeholder: 'Password', isRequired: true },
+        { code: 'email', placeholder: 'Email (optional)', isRequired: false }
+    ];
+    $scope.optData = [{
+        id: 10001,
+        MainCategory: 'ÄÐ',
+        ProductName: 'Ë®Ï´',
+        ProductColor: '°×'
+    }, {
+        id: 10002,
+        MainCategory: 'Å®',
+        ProductName: 'ˆAîI¶ÌÐä',
+        ProductColor: 'üS'
+    }, {
+        id: 10003,
+        MainCategory: 'Å®',
+        ProductName: 'ˆAîI¶ÌÐä',
+        ProductColor: 'üS'
+    }];
+
+    $scope.selectedOption = "";
+    $scope.signupForm = function () {
+        if ($scope.signup_form.$valid) {
+            alert("name:" + $scope)
+        } else {
+            //$scope.signup_form.submitted = true;
+        }
+    }
+
+});

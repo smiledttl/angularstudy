@@ -1,0 +1,14 @@
+D:\study\angular\51cto\myApp.Admin.Business\bin\Debug\myApp.Admin.Business.dll.config
+D:\study\angular\51cto\myApp.Admin.Business\bin\Debug\myApp.Admin.Business.dll
+D:\study\angular\51cto\myApp.Admin.Business\bin\Debug\myApp.Admin.Business.pdb
+D:\study\angular\51cto\myApp.Admin.Business\bin\Debug\EntityFramework.dll
+D:\study\angular\51cto\myApp.Admin.Business\bin\Debug\EntityFramework.SqlServer.dll
+D:\study\angular\51cto\myApp.Admin.Business\bin\Debug\myApp.Data.dll
+D:\study\angular\51cto\myApp.Admin.Business\bin\Debug\MySql.Data.dll
+D:\study\angular\51cto\myApp.Admin.Business\bin\Debug\MySql.Data.Entity.EF6.dll
+D:\study\angular\51cto\myApp.Admin.Business\bin\Debug\myApp.Data.pdb
+D:\study\angular\51cto\myApp.Admin.Business\bin\Debug\EntityFramework.xml
+D:\study\angular\51cto\myApp.Admin.Business\bin\Debug\EntityFramework.SqlServer.xml
+D:\study\angular\51cto\myApp.Admin.Business\obj\Debug\myApp.Admin.Business.csprojResolveAssemblyReference.cache
+D:\study\angular\51cto\myApp.Admin.Business\obj\Debug\myApp.Admin.Business.dll
+D:\study\angular\51cto\myApp.Admin.Business\obj\Debug\myApp.Admin.Business.pdb

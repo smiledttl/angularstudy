@@ -1,0 +1,11 @@
+﻿<div ng-controller="pagingTestController">
+    <div class="input-group">
+        <input type="text" class="form-control" ng-model="title">
+        <input type="date" class="form-control" ng-model="title">
+        <span class="input-group-btn">
+            <button class="btn btn-default" ng-click="search();">查询</button>            
+        </span>
+    </div>
+   
+    <table-kill load-data="search01" show-ck="true" select-ck-cb="getSelectedItems" get-url="getUrl" map="map" actions="actions" analysis="analysis" paging-option="pagingOpton"></table-kill>
+</div>
