@@ -1,7 +1,7 @@
 ﻿'use strict';
 var app = angular.module('myApp', ['ngRoute', 'ui.router', 'ngDialog', 'tableKillModule'])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
-        $urlRouterProvider.otherwise('/roomManage');
+        $urlRouterProvider.otherwise('/examManage');
     })
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
@@ -9,7 +9,7 @@ var app = angular.module('myApp', ['ngRoute', 'ui.router', 'ngDialog', 'tableKil
             templateUrl: "view/home.html",
             controller: "HomeController"
         })
-        .when("/login", {
+        .when("/login/:name/:age", {
              templateUrl: "view/login.html",
              controller: "LoginController"
          })
@@ -183,17 +183,4 @@ app.controller('FormController', function ($scope) {
 
 });
 
-app.controller('SomeController', function ($scope) {
 
-});
-
-app.controller('SecondController', function ($scope) {
-
-});
-
-app.controller('HomeController', function ($scope) {
-
-});
-app.controller('LoginController', function ($scope) {
-
-});

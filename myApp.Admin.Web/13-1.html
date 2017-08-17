@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <title>AngularJS - injector</title>
+    <script src="resource/js/angular.js"></script>
+
+
+    <script type="text/javascript">
+        angular.module("myApp", [])
+        .factory("greeter", function () {
+            return {
+                greet: function (msg) {
+                    alert(msg);
+                }
+            }
+        })
+        .controller("MyController",['$scope', 'greeter',
+        function ($scope, greeter) {
+            $scope.SayHello = function () {
+                greeter.greet("hello");
+            }
+            var injector = angular.injector(['ng', 'myApp']);
+            injector.annotate(function ($q, greeter) { });
+        }]);
+
+    </script>
+
+</head>
+<body>
+
+    <div ng-controller="MyController">
+        <input id="btn" type="button" value="提交" ng-click="SayHello()"/>
+    </div>
+</body>
+
+
+</html>
