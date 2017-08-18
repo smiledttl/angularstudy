@@ -159,6 +159,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="Module\exam12\exam12.html" />
     <Content Include="Module\exam12\exam12Controller.js" />
+    <Content Include="resource\js\mini-require.js" />
+    <Content Include="resource\js\sax.js" />
+    <Content Include="resource\js\xml2js.js" />
     <Content Include="view\home.html" />
     <Content Include="index.html" />
     <Content Include="view\login.html" />

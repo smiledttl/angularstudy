@@ -3,34 +3,138 @@
 <head>
     <meta charset="utf-8" />
     <title>AngularJS - injector</title>
-    <script src="resource/js/angular.js"></script>
+    <script src="resource/js/angular.js"></script>  
+    <script src="resource/js/mini-require.js"></script>  
+    <script src="resource/js/xml2js.js"></script>  
+    
+    <script type="text/javascript">
+        var app = angular.module("myApp", ['myApp.services']);
+    </script>
 
+    <script src="service/service.js"></script>
 
     <script type="text/javascript">
-        angular.module("myApp", [])
-        .factory("greeter", function () {
+        
+        //app.factory('UserInformation', function () {
+        //    var user = {
+        //        "name": "angular.js"
+        //    };
+        //    return user;
+
+        //});
+
+        app.factory("greeter", function () {
             return {
                 greet: function (msg) {
                     alert(msg);
                 }
             }
-        })
-        .controller("MyController",['$scope', 'greeter',
-        function ($scope, greeter) {
+        });
+
+       
+
+
+        app.controller("MyController", ['$scope', '$timeout', 'greeter', 'githubService',
+        function ($scope, $timeout,greeter, githubService) {
             $scope.SayHello = function () {
                 greeter.greet("hello");
             }
-            var injector = angular.injector(['ng', 'myApp']);
-            injector.annotate(function ($q, greeter) { });
+            //$scope.user1 = UserInformation.getCurrentUser();
+            //var injector = angular.injector(['ng', 'myApp']);
+            //injector.annotate(function ($q, greeter) { });
+
+            var timer;
+            // 注意username属性的变化
+            // 如果有变化就运行该函数
+            $scope.$watch('username', function(newUsername) {
+                // 从使用JSONP调用Github API的$http服务中返回promise
+                if (newUsername) {
+                    if (timer) $timeout.cancel(timer);
+                    timer = $timeout(function () {
+                        githubService.setUserName(newUsername);
+                        //githubService.events()
+                        //.success(function (data, status, headers) {
+                        //    // success函数在数据中封装响应
+                        //    // 因此我们需要调用data.data来获取原始数据
+                        //    $scope.events = data.data;
+                        //})
+                    }, 1500);
+                }
+            });
+
         }]);
+
+        app.controller("anotherController", ['$scope', 'githubService', 'xmlParser',
+            function ($scope, githubService, xmlParser) {
+                $scope.getGithubInfo = function () {
+                    githubService.events()
+                        .success(function (data, status, headers) {
+                            // success函数在数据中封装响应
+                            // 因此我们需要调用data.data来获取原始数据
+                            $scope.events = data.data;
+                        })
+                }
+
+                $scope.parseXml = function () {
+                    if ($scope.xmlStr) {
+                        $scope.jsonStr = xmlParser.xml2json($scope.xmlStr);
+                    } else {
+                        alert("请输入xmlStr");
+                    }
+                }
+            }]);
 
     </script>
 
+    
 </head>
 <body>
 
     <div ng-controller="MyController">
-        <input id="btn" type="button" value="提交" ng-click="SayHello()"/>
+        <label for="username">
+            Type in a GitHub username
+        </label>
+        <input type="text"
+               ng-model="username"
+               placeholder="Enter a GitHub username" />
+        <ul>
+            <li ng-repeat="event in events">
+                <!--
+            event.actor and event.repo are returned
+            by the github API. To view the raw
+            API, uncomment the next line:
+            -->
+                <!-- {{ event | json }} -->
+                {{ event.actor.login }} {{ event.repo.name }} {{event.payload.head}} {{event.created_at}}
+            </li>
+        </ul>
+        
+    </div>
+
+    <div ng-controller="anotherController">
+       
+        <ul>
+            <li ng-repeat="event in events">
+                <!--
+                event.actor and event.repo are returned
+                by the github API. To view the raw
+                API, uncomment the next line:
+                -->
+                <!-- {{ event | json }} -->
+                {{ event.actor.login }} {{ event.repo.name }} {{event.payload.head}} {{event.created_at}}
+            </li>
+        </ul>
+        <input id="btn" type="button" value="getGithubInfo" ng-click="getGithubInfo()" /><br />
+
+        <label for="username">
+            Type in a xmlStr
+        </label>
+        <input type="text"
+               ng-model="xmlStr"
+               placeholder="Enter a xmlStr" />
+        <hr />
+        {{xmlStr}}
+        
     </div>
 </body>
 
