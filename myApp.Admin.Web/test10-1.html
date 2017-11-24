@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<!--第一条注释 -->
+<html>
+<body>
+    <div id="myDiv" class="bd" title="Body text" lang="en" dir="ltr">
+    Some text
+        <div id="myDiv2">Some text</div>
+        <div id="myDiv3">Some text</div>
+    </div>
+    
+</body>
+</html>
+<!--第二条注释 -->
+<script type="text/javascript">
+    var html = document.childNodes[0];
+    console.log(html);
+    var div = document.getElementById("myDiv");
+    var div2 = document.getElementById("myDiv2");
+    alert(div.contains(div2));
+    console.log(div);
+    console.log(div.lang);
+    console.log(div.dir);
+    var text = div.childNodes[0];
+    console.log(text);
+    var divList = document.getElementsByTagName("div");
+    for (i = 0; i < divList.length; i++) {
+        console.log(divList[i]);
+    }
+       
+    var supportsDOM2StyleSheets =
+        document.implementation.hasFeature("StyleSheets", "2.0");
+    </script>

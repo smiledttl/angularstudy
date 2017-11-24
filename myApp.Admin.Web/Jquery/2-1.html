@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="../scripts/jquery-1.10.2.js" ></script>
+    <script type="text/javascript">
+        //jQuery(document).ready(function () {
+        //    alert("hello jquery!");
+
+        //});
+        $(function () {
+            $(".level1 > a").click(function () {
+                $(this).addClass("current")
+                    .next().show()
+                    .parent().siblings().children("a").removeClass("current")
+                    .next().hide();
+                return false;
+
+            });
+
+            $(".level1 > a").each(function () {
+                if($(this).parent().is(":first-child"))
+                    $(this).addClass("current")
+                    .next().show()
+                    .parent().siblings().children("a").removeClass("current")
+                    .next().hide();
+            });
+
+            var $cr = $("#cr");
+            var cr = $cr.get(0);
+            
+            $cr.click(function () {
+                if ( $cr.get(0).checked /*is(":checked")*//*prop("checked")*//*cr.checked*/) {
+                    alert("你已同意");
+                }
+
+            });
+            
+        });
+
+    </script>
+    <style>
+        .current{
+            border:2px solid blue;
+            background-color:red;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="box">
+        <ul class="menu">
+            <li class="level1">
+                <a href="#">衬衣</a>
+                <ul class="level2">
+                    <li>衬衣1</li>
+                    <li>衬衣2</li>
+                    <li>衬衣3</li>
+                </ul>
+            </li>
+            <li class="level1">
+                <a href="#">裤子</a>
+                <ul class="level2">
+                    <li>裤子1</li>
+                    <li>裤子2</li>
+                    <li>裤子3</li>
+                </ul>
+            </li>
+            <li class="level1">
+                <a href="#">夹克</a>
+                <ul class="level2">
+                    <li>夹克1</li>
+                    <li>夹克2</li>
+                    <li>夹克3</li>
+                </ul>
+            </li>
+            <li class="level1">
+                <a href="#">羊毛衫</a>
+                <ul class="level2">
+                    <li>羊毛衫1</li>
+                    <li>羊毛衫2</li>
+                    <li>羊毛衫3</li>
+                </ul>
+            </li>
+
+        </ul>
+
+    </div>
+    <div>
+        <input type="checkbox" id="cr" /> <label for="cr">我已阅读了上面的规则。。。</label>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>test digest</title>
+    <script src="resource/js/angular.js"></script>
+    <script src="resource/js/jquery-2.1.0.js"></script>
+    <script type="text/javascript">
+        var app = angular.module("myApp", []);
+        var def = $.Deferred();
+        console.log(def);
+
+        function runAsyncJQuery() {
+            var def = $.Deferred();
+            setTimeout(function () {
+                console.log("jquery任务完成");
+                def.resolve("jquery返回的数据");
+            }, 5000);
+            debugger;
+            return def.promise();
+        }
+
+        function runAsync1() {
+            var p = new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    console.log("任务完成1");
+                    resolve("返回的数据1");
+
+                }, 2000);
+            });
+            return p;
+        }
+
+
+        function runAsync2() {
+            var p = new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    console.log("任务完成2");
+                    resolve("返回的数据2");
+
+                }, 2000);
+            });
+            return p;
+        }
+
+
+        function runAsync3() {
+            var p = new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    console.log("任务完成3");
+                    resolve("返回的数据3");
+
+                }, 1000);
+            });
+            return p;
+        }
+
+        app.controller("MyController", function ($scope) {
+            //debugger;
+            $scope.name = "liulb";
+            $scope.login = function () {
+                console.log("username:" + $scope.name);
+            };
+        });
+
+        //runAsync1().then(function (data) {
+        //    console.log(data);
+        //    return runAsync2();
+        //}).then(
+        //    function (data) {
+        //        console.log(data);
+        //        return runAsync3();
+        //    }, function (reason, data) {
+        //        console.log("failed:reason:"+reason+"data:"+data)
+        //    }
+        //).then(function (data) {
+        //    console.log(data);
+        //});
+
+        //Promise
+        //.race([runAsync1(), runAsync2(), runAsync3()])
+        //.then(
+        //    function (datas) {
+        //        console.log(datas);
+        //    }
+        // );
+
+        //var d = runAsyncJQuery();
+        //d.then(function (data) {
+        //    console.log(data);
+        //});
+        //d.resolve("在外部结束");
+
+        //var num = 0;
+        //outermost:
+        //for (var i=0; i < 10; i++) {
+        //    for (var j=0; j < 10; j++){
+        //        if (i == 5 && j == 5) {
+        //            break outermost;
+        //        }
+        //        num++;
+        //    }
+        //}
+        //alert(num); //55
+
+        var colors = ["blue", "red", 'green'];
+        console.log(colors);
+        colors[5] = "black";
+
+        var lists = new Array();
+        var count = lists.unshift("red", "blue");
+        console.log(count);
+        count = lists.unshift("black");
+        var item = lists.pop();
+        console.log(item);
+
+        function compare(value1, value2) {
+            if(value1<value2)
+            {
+                return -1;
+            } else if (value1 > value2) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+
+        var values = [0, 1, 5, 10, 15];
+        console.log(values);
+        values.sort();
+        console.log(values);
+        values.sort(compare);
+        console.log(values);
+
+        var pattern1 , i;
+        for (i = 0; i < 10; i++) {
+            pattern1 = /[bc]at/gi;
+            console.log("test1: "+i+" "+pattern1.test("catastrophe"));
+        }
+
+        for (i = 0; i < 10; i++) {
+            pattern1 = new RegExp("\[bc\]at", "gi");
+            //pattern1.test("catastrophe");
+            console.log("test2: " + i + " " + pattern1.test("catastrophe"));
+        }
+
+        var text = "mom and dad and baby";
+        var pattern = /mom (and dad (and baby)?)?/gi;
+
+        var matches = pattern.exec(text);
+        for (var j = 0; j < matches.length;j++){
+            console.log(matches[j]);
+        }
+     
+    </script>
+</head>
+<body>
+    <div ng-controller="MyController">
+        <h2>Sign In</h2>
+        <input type="text" ng-model="name" ng-minlength="3" placeholder="Please input your name" />
+        <input type="submit" ng-click="login()" />
+        <p>{{name}}</p>
+
+    </div>
+</body>
+</html>

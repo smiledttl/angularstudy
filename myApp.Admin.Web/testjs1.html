@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>test javascript 1</title>
+    <style type="text/css">
+        div {
+            text-indent: 2em;
+        }
+    </style>
+    <script type="text/javascript">
+       
+        /*function callSomeFunction(func, args) {
+            return func(args);
+        }
+
+        function add10(num) {
+            return num + 10;
+        }
+
+        function getGreeting(name) {
+            return 'Hello,' + name;
+        }
+
+
+       
+        var global=function(){
+            return this;
+        }
+
+        var person = {
+            name: "liulb",
+            age: 36,
+            job: "soft engineer",
+            sayHello: function () {
+                alert(this.name);
+            }
+        }
+        person.sayHello();
+
+        var book = {};
+        Object.defineProperties(book, {
+            _year: {
+                value: 2004
+            },
+            edition: {
+                value: 1
+            },
+            year: {
+                get: function(){
+                    return this._year;
+                },
+                set: function(newValue){
+                    if (newValue > 2004) {
+                        this._year = newValue;
+                        this.edition += newValue - 2004;
+                    }
+                }
+            }
+        });
+        var descriptor = Object.getOwnPropertyDescriptor(book, "_year");
+        alert(descriptor.value); //2004
+        alert(descriptor.configurable); //false
+        alert(typeof descriptor.get); //"undefined"
+        var descriptor = Object.getOwnPropertyDescriptor(book, "year");
+        alert(descriptor.value); //undefined
+        alert(descriptor.enumerable); //false
+        alert(descriptor.get); //"function"
+
+        function Person() {
+
+        }
+
+        Person.prototype.name = "liulb";
+        Person.prototype.age = 36;
+        Person.prototype.job = "software engineer";
+        Person.prototype.SayHello = function () {
+            alert(this.name);
+        }
+        person1 = new Person();
+        person2 = new Person();
+        person2.name = "liu libin 2";
+        alert(person1.SayHello == person2.SayHello);
+        
+        person1.SayHello();
+        person2.SayHello();
+        alert(person1.job);
+        alert(person2.job);
+        person1.job = "teacher";
+        alert(Object.getPrototypeOf(person1).job);
+        alert(person1.job);
+        alert(person2.job);
+        alert(person1.job === person2.job);
+        var keys = Object.getOwnPropertyNames(person1);
+        alert(keys);
+        var keys_proto = Object.getOwnPropertyNames(Object.getPrototypeOf(person1));
+        alert(keys_proto);*/
+
+        /*function Person(name, age, job){
+            //属性
+            this.name = name;
+            this.age = age;
+            this.job = job;         
+            //方法
+            if (typeof this.sayName != "function"){
+                Person.prototype.sayName = function(){
+                    alert(this.name);
+                };
+            }
+        }
+        var friend1 = new Person("Nicholas", 29, "Software Engineer");
+        friend1.sayName();
+        Person.prototype = {           
+            friends: ["Shelby", "Court"],
+            sayHi: function () {
+                alert("Hi,"+this.name);
+            }
+        };
+        var friend2 = new Person("Nicholas 2", 36, "Software Engineer");
+        alert(friend2.friends);
+        friend2.sayHi();
+        friend2.sayName(); */
+
+        function SuperType() {
+            this.property = true;
+        }
+        SuperType.prototype.getSuperValue = function () {
+            return this.property;
+        };
+        function SubType() {
+            this.subproperty = false;
+        }
+        //继承了 SuperType
+        SubType.prototype = new SuperType();
+        //使用字面量添加新方法，会导致上一行代码无效
+        SubType.prototype = {
+            getSubValue: function () {
+                return this.subproperty;
+            },
+            someOtherMethod: function () {
+                return false;
+            }
+        };
+        var instance = new SubType();
+        alert(instance.getSuperValue()); //error!
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
