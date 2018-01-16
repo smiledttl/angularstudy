@@ -1,32 +1,54 @@
 ﻿<!DOCTYPE html>
-<!--第一条注释 -->
 <html>
+<head>
+    <title>Example</title>
+</head>
 <body>
-    <div id="myDiv" class="bd" title="Body text" lang="en" dir="ltr">
-    Some text
-        <div id="myDiv2">Some text</div>
-        <div id="myDiv3">Some text</div>
+    <p><b>Hello</b> world!</p>
+    <div id="fatherContainer">
+        <div id="container">
+            <input type="button" id="myBtn" value="click Me" onclick="showMessage(this)" />
+        </div>
     </div>
-    
+
 </body>
 </html>
 <!--第二条注释 -->
 <script type="text/javascript">
-    var html = document.childNodes[0];
-    console.log(html);
-    var div = document.getElementById("myDiv");
-    var div2 = document.getElementById("myDiv2");
-    alert(div.contains(div2));
-    console.log(div);
-    console.log(div.lang);
-    console.log(div.dir);
-    var text = div.childNodes[0];
-    console.log(text);
-    var divList = document.getElementsByTagName("div");
-    for (i = 0; i < divList.length; i++) {
-        console.log(divList[i]);
+
+    var supportsTraversal =
+        document.implementation.hasFeature("Traversal", "2.0");
+    console.log("supportsTraversal:" + supportsTraversal);
+
+    var supportsNodeIterator = (typeof document.createNodeIterator == "function");
+    var supportsTreeWalker = (typeof document.createTreeWalker == "function");
+
+    var nodeIterator = document.createNodeIterator(document, NodeFilter.SHOW_ELEMENT, null, false);
+    var currentNode = nodeIterator.nextNode();
+    while (currentNode) {
+        //console.log("tagName:" + currentNode.tagName + ",nodeValue:" + currentNode.nodeValue);
+        //console.log(currentNode.innerHTML);
+        currentNode = nodeIterator.nextNode();
     }
-       
-    var supportsDOM2StyleSheets =
-        document.implementation.hasFeature("StyleSheets", "2.0");
+    var btn = document.getElementById("myBtn");
+    btn.addEventListener("click", function () {
+        console.log(event);
+        alert(this.value);
+    }, false);
+
+    btn.addEventListener("click", function () {
+        var userPassword = window.prompt("<#请输入退款密码#>:");
+        console.log("oncapture:"+event);
+        alert("hello cpature"+this.value);
+    }, true);
+
+    //btn.onclick = function(){
+    //    console.log(event);
+    //    alert(this.value);
+    //}
+
+    function showMessage() {
+        console.log(event);
+        alert(target.value);
+    }
     </script>

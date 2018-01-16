@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>div布局第九天</title>
+    <style type="text/css">
+        body, ul, li, h1, h2, h3, h4, h5, h6, p, form, dl, dt, dd {
+            margin: 10px;
+            padding: 0px;
+            font-size: 16px;
+            font-weight: normal;
+            font-family:Verdana;
+        }
+
+        #textfield2 {
+            color:#00f;
+            border:1px solid #ff9c00;
+        }
+
+        #textfield3 {            
+            width:200px;
+            height:20px;
+            font-size:20px;
+        }
+        #textfield4 {
+            background: url(resource/images/module.jpg) 5px 3px no-repeat;
+            position: relative;
+            width: 296px;
+            height: 38px;
+            padding: 0px 8px 0px 38px;
+            margin: 0 auto 24px;
+            background-color: #fff;
+            /* -webkit-box-sizing: border-box; */
+            /*-moz-box-sizing: border-box;
+            box-sizing: border-box;*/
+            border-radius: 3px;
+            overflow: hidden;
+            border: 2px solid #C3C;
+        }
+        .area {
+            border: 1px solid #f90;
+            overflow: auto;
+            background: #fff url(resource/images/module.jpg) right bottom no-repeat;
+            padding:5px ;
+        }
+
+        .btn02 {
+            background: #fff url(resource/images/nav_bg_2.png) -2px -2px no-repeat;
+            height: 38px;
+            width: 80px;
+            color: #297405;
+            border: 1px solid #90be4a;
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 180%;
+            cursor: pointer;
+        }
+
+        .btn04 {
+            background: url(resource/images/nav_bg_2.png) 0 -38px;
+            width: 70px;
+            height: 38px;
+            color: #9a4501;
+            border: 1px solid #dbb119;
+            font-size: 12px;
+            line-height: 160%;
+            cursor: pointer;
+        }
+
+        .btn07 {
+            background: url(resource/images/nav_bg_2.png) 0px -8px;
+            border: 1px solid #cfab25;
+            height: 32px;
+            font-weight: bold;
+            padding-top: 2px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #660000;
+        }
+
+        .btn08 {
+            background: url(/resource/images/nav_bg_2.png) 0px -40px;
+            border: 1px solid #8b9c56;
+            height: 32px;
+            font-weight: bold;
+            padding-top: 2px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #360;
+        }
+
+        .btn09 {
+            background: url(resource/images/nav_bg_2.png) 0 0 no-repeat;
+            width: 107px;
+            height: 37px;
+            border: none;
+            font-size: 14px;
+            font-weight: bold;
+            color: #d84700;
+            cursor: pointer;
+        }
+
+        .select{
+            border:1px solid #f60;
+            background:#ff9;
+            height:30px;
+        }
+        .tip{
+            position:absolute;
+            top:5px;
+            left:100px;
+            width:30px;            
+            border:1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    
+    <p>
+        <input type="text" name="textfield" id="textfield" />
+        这是默认样式
+    </p>
+    <p>
+        <input name="textfield2" type="text" class="text1" id="textfield2" value="我是蓝色的" />
+        这是改变边框的样式和文字颜色
+    </p>
+    <p>
+        <input name="textfield3" type="text" class="text2" id="textfield3" value="看我大吧" />
+        这是改变边框并设置高宽和字体大小的样式
+    </p>
+    <p>
+        <input class="text3" type="text" name="textfield4" id="textfield4" />
+        这是增加背景图片实例，也可放左侧
+    </p>
+    <p>
+        <input class="text4" type="text" name="textfield5" id="textfield5" />
+        这是增加了一个背景图片为gif动画
+    </p>
+    <p>
+        <textarea name="textarea" id="textarea" cols="45" rows="5"></textarea>
+    </p>
+    <p>
+        <textarea class="area" name="textarea2" id="textarea2" cols="45"
+                  rows="5"></textarea>
+    </p>
+    <div>
+
+        <p>
+            <input name="button" type="submit" class="btn02" id="button" value="提交" />
+        </p>
+        <p>
+            <input name="button2" type="submit" class="btn04" id="button2" value="提交" />
+        </p>
+        <p>
+            <input name="button" type="submit" class="btn07" id="button" value="提交" />
+        </p>
+        <p>
+            <input name ="button2" type="submit" class="btn08" id="button2" value="看看我的宽度有多
+宽" />
+        </p>
+        <p>
+            <input name="button" type="submit" class="btn09" id="button" value="免费注册" />
+        </p>
+    </div>
+    <div style="position:relative;">
+        <p>请选择项目： </p>
+        <p>
+            <select name="select" id="select" class="select">
+                <option>请选择----------------</option>
+                <option>标准之路</option>
+            </select>
+        </p>
+        <div class="tip">看看谁能把我挡着</div>
+    </div>
+    <div style="margin-top:200px;">
+        
+        <label for="name">姓名： </label>
+        <input type="text" name="name" id="name" />
+        </p>
+        <p>
+            性别：
+            <input type="radio" name="sex" id="male" value="radio" /><label for="male">男</label>
+            <input type="radio" name="sex" id="female" value="radio2" /><label for="female">
+                女
+            </label>
+        </p>
+        <p>
+            爱好：
+            <input type="checkbox" name="music" id="music" /><label for="music">听音乐</label>
+            <input type="checkbox" name="web" id="web" /><label for="web">上网</label>
+            <input type="checkbox" name="book" id="book" /><label for="book">看书</label>
+        </p>
+        <p>
+            <label for="content">简历： </label>
+            <textarea name="content" id="content" cols="45" rows="5"></textarea>
+        </p>
+    </div>
+    
+</body>
+</html>
